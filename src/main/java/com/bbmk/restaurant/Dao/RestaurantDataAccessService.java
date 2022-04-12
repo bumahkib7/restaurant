@@ -47,17 +47,6 @@ public class RestaurantDataAccessService implements RestaurantDao {
     }
 
     @Override
-    public int deleteFoodById(UUID id) {
-
-        return 0;
-    }
-
-    @Override
-    public int updateFoodById(UUID id, Food food) {
-        return 0;
-    }
-
-    @Override
     public int insertFood(Food food) {
         return 0;
     }

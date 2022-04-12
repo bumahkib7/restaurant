@@ -19,10 +19,6 @@ public interface RestaurantDao {
 
     Optional<Food> getFoodById(UUID id);
 
-    int deleteFoodById(UUID id);
-
-    int updateFoodById(UUID id, Food food);
-
     @Transactional
     default int insertFoods(List<Food> foods) {
         int count = 0;
