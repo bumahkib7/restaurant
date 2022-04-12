@@ -3,11 +3,9 @@ package com.bbmk.restaurant.Dao;
 import com.bbmk.restaurant.models.Food;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Repository("nlseuxsa")
 public class RestaurantDataAccessService implements RestaurantDao {
@@ -20,60 +18,31 @@ public class RestaurantDataAccessService implements RestaurantDao {
 
 
     @Override
-    public List<Food> getAllFood(){
-        final String sql = "SELECT name, price FROM menu";
+    public List<Food> getAllFood() {
+        final String sql = "SELECT name, price FROM menu1";
         return jdbcTemplate.query(sql, (resultSet, i) -> {
             int id = Integer.parseInt(resultSet.getString("id"));
             String name = resultSet.getString("name");
-            int price = Integer.parseInt(resultSet.getString("price"));
-            return new Food(id, name, price);
+            Integer price = Integer.parseInt(resultSet.getString("price"));
+            return  new Food(id, name, price);
         });
     }
 
 
     @Override
-    @Transactional
-    public int insertFood(String name, int price) {
-
-         return jdbcTemplate.update(
-                 "INSERT INTO public.menu (name, price) VALUES (?, ?)",
-                 name, price
-         );
+    public int deleteFood(Integer id, String name, int price) {
+        return jdbcTemplate.update("DELETE  From menu1 Where id = 1");
     }
 
     @Override
-    public String deleteFood(String name, int price) {
-        return null;
-    }
-
-    @Override
-    public int insertFood(Food food) {
-        return 0;
-    }
-
-    @Override
-    public void updateFoodById(UUID id, String name, int price) {
+    public int insertFood(Integer id, String name, int price) {
+        return jdbcTemplate.update("INSERT INTO public.Menu1 VALUES (id,name,price)");
 
     }
 
     @Override
-    public int insertFood(UUID id, Food food) {
-        return 0;
-    }
-
-    @Override
-    public List<Food> getFoods() {
-        return null;
-    }
-
-    @Override
-    public Optional<Food> getFoodById(UUID id) {
-        return null;
-    }
-
-    @Override
-    public Optional<Food> getFoodByName(String name) {
-        return null;
+    public int getFoodByName(String name) {
+        return jdbcTemplate.update("SELECT name FROM menu1");
     }
 
     @Override
