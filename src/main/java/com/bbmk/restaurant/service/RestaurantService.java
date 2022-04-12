@@ -29,9 +29,9 @@ public class RestaurantService {
         return restaurantDao.deleteFood(name, price);
     }
 
-    public int insertFood(String name, int price) {
-        return restaurantDao.insertFood(name, price);
 
+    public int insertFood(String name, int price) {
+        return 0;
     }
 }
 

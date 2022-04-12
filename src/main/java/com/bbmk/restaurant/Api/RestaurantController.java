@@ -12,7 +12,6 @@ import java.util.List;
 
 public class RestaurantController {
     @Autowired
-    RestaurantService restaurantService;
     private final RestaurantService restaurantService;
 
     @Autowired

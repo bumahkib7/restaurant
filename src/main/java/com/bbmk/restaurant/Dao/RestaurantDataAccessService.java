@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository("nlseuxsa")
 public class RestaurantDataAccessService implements RestaurantDao {
@@ -45,11 +47,52 @@ public class RestaurantDataAccessService implements RestaurantDao {
     }
 
     @Override
-    public String deleteFood(String name) {
-        String sql = "DELETE FROM public.menu WHERE name=?";
-        return jdbcTemplate.query(
-                String.valueOf(new Object[] {name}))==1;
+    public int deleteFoodById(UUID id) {
+
+        return 0;
     }
 
+    @Override
+    public int updateFoodById(UUID id, Food food) {
+        return 0;
+    }
+
+    @Override
+    public int insertFood(Food food) {
+        return 0;
+    }
+
+    @Override
+    public void updateFoodById(UUID id, String name, int price) {
+
+    }
+
+    @Override
+    public int insertFood(UUID id, Food food) {
+        return 0;
+    }
+
+    @Override
+    public List<Food> getFoods() {
+        return null;
+    }
+
+    @Override
+    public Optional<Food> getFoodById(UUID id) {
+        return null;
+    }
+
+    @Override
+    public Optional<Food> getFoodByName(String name) {
+        return null;
+    }
+
+    @Override
+    public Optional<Food> getFoodByPrice(int price) {
+        return Optional.empty();
+    }
 
 }
+
+
+// End of file

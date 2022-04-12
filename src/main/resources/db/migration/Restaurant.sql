@@ -1,5 +1,5 @@
 CREATE TABLE Menu(
-    "id" uuid PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     "name" varchar ,
     "price" int
 
