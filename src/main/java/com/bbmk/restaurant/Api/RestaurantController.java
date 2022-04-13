@@ -20,15 +20,16 @@ public class RestaurantController {
 
     }
     @PostMapping
-     public int insertFood(@RequestBody Food food) {
-        return restaurantService.insertFood(food.getId(), food.getName(), food.getPrice());
+     public void insertFood(@RequestBody Integer id, String name, Integer price) {
+        restaurantService.insertFood(id, name, price);
      }
      @GetMapping
     public List<Food> getAllFoods() {
         return restaurantService.getAllFoods();
      }
     @DeleteMapping
-    public int deleteFood(Integer id, String name, int price) {
-        return restaurantService.deleteFood(id, name, price);
+    public void deleteFoodById(Long id) {
+        restaurantService.deleteFoodById(id);
     }
-}
+
+    }

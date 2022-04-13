@@ -16,11 +16,12 @@ import java.util.List;
 @Service
 public class RestaurantService {
 
+    @Qualifier("rzosknmk@rogue.db.elephantsql.com")
     @Autowired
     final RestaurantDao restaurantDao;
 
 
-    public RestaurantService(@Qualifier("nlseuxsa") RestaurantDao restaurantDao) {
+    public RestaurantService(@Qualifier("rzosknmk@rogue.db.elephantsql.com") RestaurantDao restaurantDao) {
         this.restaurantDao = restaurantDao;
     }
 
@@ -28,16 +29,16 @@ public class RestaurantService {
         return restaurantDao.getAllFood();
     }
 
-    public int deleteFood(Integer id, String name, int price) {
-        return restaurantDao.deleteFood(id,name, price);
+    public void insertFood(Integer id, String name, Integer price) {
+        restaurantDao.insertFood(id, name, price);
     }
 
+    public void deleteFoodById(Integer id, String name, Integer price) {
+        restaurantDao.deleteFood(id, name, price);
+    }
 
-
-
-
-    public int insertFood(Integer id, String name, int price) {
-        return restaurantDao.insertFood(id, name, price);
+    public void deleteFoodById(Long id) {
+        restaurantDao.deleteFoodById(id);
     }
 }
 
