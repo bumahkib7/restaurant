@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository("nlseuxsa")
+@Repository("dcgayrhs")
 public class RestaurantDataAccessService implements RestaurantDao {
 
     final JdbcTemplate jdbcTemplate;
@@ -17,36 +17,37 @@ public class RestaurantDataAccessService implements RestaurantDao {
     }
 
 
+
     @Override
     public List<Food> getAllFood() {
-        final String sql = "SELECT name, price FROM menu1";
+        final String sql = "SELECT * FROM menu";
         return jdbcTemplate.query(sql, (resultSet, i) -> {
-            int id = Integer.parseInt(resultSet.getString("id"));
+            Integer id = Integer.parseInt(resultSet.getString("id"));
             String name = resultSet.getString("name");
-            Integer price = Integer.parseInt(resultSet.getString("price"));
+            int price = Integer.parseInt(resultSet.getString("price"));
             return  new Food(id, name, price);
         });
     }
 
 
     @Override
-    public int deleteFood(Integer id, String name, int price) {
-        return jdbcTemplate.update("DELETE  From menu1 Where id = 1");
+    public Integer deleteFood(Integer id, String name, Integer price) {
+        return jdbcTemplate.update("DELETE  From menu Where id = 1");
     }
 
     @Override
-    public int insertFood(Integer id, String name, int price) {
-        return jdbcTemplate.update("INSERT INTO public.Menu1 VALUES (id,name,price)");
+    public Integer insertFood(Integer id, String name, Integer price) {
+        return jdbcTemplate.update("INSERT INTO public.Menu VALUES (id,name,price)");
 
     }
 
     @Override
-    public int getFoodByName(String name) {
-        return jdbcTemplate.update("SELECT name FROM menu1");
+    public Integer getFoodByName(String name) {
+        return jdbcTemplate.update("SELECT name FROM menu");
     }
 
     @Override
-    public Optional<Food> getFoodByPrice(int price) {
+    public Optional<Food> getFoodByPrice(Integer price) {
         return Optional.empty();
     }
 

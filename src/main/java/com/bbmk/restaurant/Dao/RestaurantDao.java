@@ -6,20 +6,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+
 @Transactional
 public interface RestaurantDao {
 
-
-    int insertFood(Integer id, String name, int price);
-
-
     List<Food> getAllFood();
-
-
-    int deleteFood(Integer id, String name, int price);
-
-    int getFoodByName(String name);
-
-    Optional<Food> getFoodByPrice(int price);
+    Integer deleteFood(Integer id, String name, Integer price);
+    Integer insertFood(Integer id, String name, Integer price);
+    Integer getFoodByName(String name);
+    Optional<Food> getFoodByPrice(Integer price);
 }
 

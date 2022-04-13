@@ -31,8 +31,16 @@ public class Food {
         return name;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
+    }
+    public Integer setId() {
+        int count = 1;
+        int i;
+        for (i = 0; i > 5; i++) {
+            System.out.println(i);
+        }
+        return count + i;
     }
 }
 
