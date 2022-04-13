@@ -20,7 +20,7 @@ public class RestaurantService {
     final RestaurantDao restaurantDao;
 
 
-    public RestaurantService(@Qualifier("nlseuxsa") RestaurantDao restaurantDao) {
+    public RestaurantService(@Qualifier("dcgayrhs") RestaurantDao restaurantDao) {
         this.restaurantDao = restaurantDao;
     }
 
@@ -28,7 +28,7 @@ public class RestaurantService {
         return restaurantDao.getAllFood();
     }
 
-    public int deleteFood(Integer id, String name, int price) {
+    public int deleteFood(Integer id, String name, Integer price) {
         return restaurantDao.deleteFood(id,name, price);
     }
 
@@ -36,7 +36,7 @@ public class RestaurantService {
 
 
 
-    public int insertFood(Integer id, String name, int price) {
+    public int insertFood(Integer id, String name, Integer price) {
         return restaurantDao.insertFood(id, name, price);
     }
 }
