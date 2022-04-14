@@ -11,13 +11,12 @@ public class Food {
     public Food(
             @JsonProperty("id") Integer id,
             @JsonProperty("name") String name,
-            @JsonProperty("price") int price) {
+            @JsonProperty("price") Integer price) {
         this.id = id;
         this.name = name;
         this.price = price;
 
     }
-
 
 
     public Food() {
@@ -29,14 +28,13 @@ public class Food {
         return id;
     }
 
-    public  String getName() {
+    public String getName() {
         return name;
     }
 
     public Integer getPrice() {
         return price;
     }
-
 
     public void setPrice(Integer price) {
         this.price = price;

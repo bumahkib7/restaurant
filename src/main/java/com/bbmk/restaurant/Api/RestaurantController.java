@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("api/v1/food")
 
 public class RestaurantController {
-    @Autowired
+
     final RestaurantService restaurantService;
 
     @Autowired
@@ -19,19 +19,23 @@ public class RestaurantController {
         this.restaurantService = restaurantService;
 
     }
+
     @PostMapping
-     public void insertFood(@RequestBody Integer id, String name, Integer price) {
+    public void insertFood(@RequestBody Integer id, String name, Integer price) {
         restaurantService.insertFood(id, name, price);
-     }
-     @GetMapping
+    }
+
+    @GetMapping
     public List<Food> getAllFoods() {
         return restaurantService.getAllFoods();
-     }
+    }
+
     @DeleteMapping
     public String deleteFood(Integer id, String name, Integer price) {
 
         return restaurantService.deleteFood(id, name, price);
     }
+
     @PutMapping
     public void updateFood(Integer id, String name, Integer price) {
         restaurantService.updateFood(id, name, price);
