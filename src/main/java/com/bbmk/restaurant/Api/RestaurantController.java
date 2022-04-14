@@ -28,8 +28,16 @@ public class RestaurantController {
         return restaurantService.getAllFoods();
      }
     @DeleteMapping
-    public Integer deleteFood(Integer id, String name, Integer price) {
+    public String deleteFood(Integer id, String name, Integer price) {
 
         return restaurantService.deleteFood(id, name, price);
     }
+    @PutMapping
+    public void updateFood(Integer id, String name, Integer price) {
+        restaurantService.updateFood(id, name, price);
+    }
+
+
 }
+
+
