@@ -3,11 +3,9 @@ package com.bbmk.restaurant.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Food {
-    private final int id;
-    private final String name;
-    private final int price;
-
-
+    private int id;
+    private String name;
+    private int price;
 
 
     public Food(
@@ -22,6 +20,10 @@ public class Food {
 
 
 
+    public Food() {
+        super();
+    }
+
 
     public Integer getId() {
         return id;
@@ -34,13 +36,19 @@ public class Food {
     public Integer getPrice() {
         return price;
     }
-    public Integer setId() {
-        int count = 1;
-        int i;
-        for (i = 0; i > 5; i++) {
-            System.out.println(i);
-        }
-        return count + i;
+
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+
     }
 }
 

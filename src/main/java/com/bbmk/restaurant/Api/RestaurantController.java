@@ -22,14 +22,24 @@ public class RestaurantController {
     @PostMapping
      public void insertFood(@RequestBody Integer id, String name, Integer price) {
         restaurantService.insertFood(id, name, price);
-     }
-     @GetMapping
+    }
+
+
+    @GetMapping
     public List<Food> getAllFoods() {
         return restaurantService.getAllFoods();
      }
     @DeleteMapping
-    public Integer deleteFood(Integer id, String name, Integer price) {
+    public String deleteFood(Integer id, String name, Integer price) {
 
         return restaurantService.deleteFood(id, name, price);
     }
+    @PutMapping
+    public void updateFood(Integer id, String name, Integer price) {
+        restaurantService.updateFood(id, name, price);
+    }
+
+
 }
+
+

@@ -7,13 +7,36 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Transactional
+
 public interface RestaurantDao {
 
+    @Transactional
+    List<Food> getFoods();
+
+    @Transactional
+    Optional<Food> getFood(Integer id);
+
+    @Transactional
+    void addFood(Food food);
+
+    @Transactional
+     void updateFood(Food food);
+
+    @Transactional
+    void deleteFood(Integer id);
+
+
+
+
+
     List<Food> getAllFood();
-    Integer deleteFood(Integer id, String name, Integer price);
-    Integer insertFood(Integer id, String name, Integer price);
-    Integer getFoodByName(String name);
-    Optional<Food> getFoodByPrice(Integer price);
+
+    @Transactional
+    int insertFood(String name, int price);
+
+    String deleteFood(String name, int price);
+    List<Food> getFoodByName(String name);
+
 }
 
+// End of file
