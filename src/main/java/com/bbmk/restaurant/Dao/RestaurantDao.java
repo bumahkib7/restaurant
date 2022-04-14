@@ -25,10 +25,6 @@ public interface RestaurantDao {
     @Transactional
     void deleteFood(Integer id);
 
-
-
-
-
     List<Food> getAllFood();
 
     @Transactional
