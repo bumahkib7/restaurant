@@ -11,24 +11,37 @@ import java.util.List;
 @RequestMapping("api/v1/food")
 
 public class RestaurantController {
-    @Autowired
-    private final RestaurantService restaurantService;
+
+    final RestaurantService restaurantService;
 
     @Autowired
     public RestaurantController(RestaurantService restaurantService) {
         this.restaurantService = restaurantService;
 
     }
+
     @PostMapping
-     public int insertFood(@RequestBody Food food) {
-        return restaurantService.insertFood( food.getName(), food.getPrice());
-     }
-     @GetMapping
+    public void insertFood(@RequestBody Integer id, String name, Integer price) {
+        restaurantService.insertFood(id, name, price);
+    }
+
+    @GetMapping
     public List<Food> getAllFoods() {
         return restaurantService.getAllFoods();
-     }
-    @DeleteMapping
-    public String deleteFood(String name, int price) {
-        return restaurantService.deleteFood(name, price);
     }
+
+    @DeleteMapping
+    public String deleteFood(Integer id, String name, Integer price) {
+
+        return restaurantService.deleteFood(id, name, price);
+    }
+
+    @PutMapping
+    public void updateFood(Integer id, String name, Integer price) {
+        restaurantService.updateFood(id, name, price);
+    }
+
+
 }
+
+

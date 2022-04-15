@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @Repository("nlseuxsa")
 public class RestaurantDataAccessService implements RestaurantDao {
@@ -20,8 +20,8 @@ public class RestaurantDataAccessService implements RestaurantDao {
 
 
     @Override
-    public List<Food> getAllFood(){
-        final String sql = "SELECT name, price FROM menu";
+    public List<Food> getAllFood() {
+        final String sql = "SELECT name, price FROM menus";
         return jdbcTemplate.query(sql, (resultSet, i) -> {
             int id = Integer.parseInt(resultSet.getString("id"));
             String name = resultSet.getString("name");
@@ -35,10 +35,10 @@ public class RestaurantDataAccessService implements RestaurantDao {
     @Transactional
     public int insertFood(String name, int price) {
 
-         return jdbcTemplate.update(
-                 "INSERT INTO public.menu (name, price) VALUES (?, ?)",
-                 name, price
-         );
+        return jdbcTemplate.update(
+                "INSERT INTO public.menus (name, price) VALUES (?, ?)",
+                name, price
+        );
     }
 
     @Override
@@ -47,41 +47,37 @@ public class RestaurantDataAccessService implements RestaurantDao {
     }
 
     @Override
-    public int insertFood(Food food) {
-        return 0;
+    public List<Food> getFoodByName(String name) {
+        return null;
     }
 
-    @Override
-    public void updateFoodById(UUID id, String name, int price) {
-
-    }
-
-    @Override
-    public int insertFood(UUID id, Food food) {
-        return 0;
-    }
-
+    @Transactional
     @Override
     public List<Food> getFoods() {
         return null;
     }
 
+    @Transactional
     @Override
-    public Optional<Food> getFoodById(UUID id) {
-        return null;
-    }
-
-    @Override
-    public Optional<Food> getFoodByName(String name) {
-        return null;
-    }
-
-    @Override
-    public Optional<Food> getFoodByPrice(int price) {
+    public Optional<Food> getFood(Integer id) {
         return Optional.empty();
     }
 
-}
+    @Override
+    public void addFood(Food food) {
 
+    }
+
+    @Override
+    public void updateFood(Food matooke) {
+        jdbcTemplate.update( "UPDATE public.menus SET name = ?, price = ? WHERE id = ?");
+
+    }
+
+    @Override
+    public void deleteFood(Integer id) {
+
+    }
+}
 
 // End of file

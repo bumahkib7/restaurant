@@ -3,24 +3,28 @@ package com.bbmk.restaurant.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Food {
-    private final int id;
-    private final String name;
-    private final int price;
-
-
+    private int id;
+    private String name;
+    private int price;
 
 
     public Food(
-            @JsonProperty("id") int id,
+            @JsonProperty("id") Integer id,
             @JsonProperty("name") String name,
-            @JsonProperty("price") int price) {
+            @JsonProperty("price") Integer price) {
         this.id = id;
         this.name = name;
         this.price = price;
 
     }
 
-    public int getId() {
+
+    public Food() {
+        super();
+    }
+
+
+    public Integer getId() {
         return id;
     }
 
@@ -28,8 +32,21 @@ public class Food {
         return name;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+
     }
 }
 

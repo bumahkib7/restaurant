@@ -5,31 +5,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 
 public interface RestaurantDao {
-    void updateFoodById(UUID id, String name, int price);
-
-    int insertFood(UUID id, Food food);
-
-
-
-    List<Food> getFoods();
-
-    Optional<Food> getFoodById(UUID id);
 
     @Transactional
-    default int insertFoods(List<Food> foods) {
-        int count = 0;
-        for (Food food : foods) {
-            count += insertFood(food);
-        }
-        return count;
-    }
+    List<Food> getFoods();
 
-    int insertFood(Food food);
+    @Transactional
+    Optional<Food> getFood(Integer id);
 
+    @Transactional
+    void addFood(Food food);
+
+    @Transactional
+     void updateFood(Food food);
+
+    @Transactional
+    void deleteFood(Integer id);
 
     List<Food> getAllFood();
 
@@ -37,9 +31,8 @@ public interface RestaurantDao {
     int insertFood(String name, int price);
 
     String deleteFood(String name, int price);
+    List<Food> getFoodByName(String name);
 
-    Optional<Food> getFoodByName(String name);
-
-    Optional<Food> getFoodByPrice(int price);
 }
 
+// End of file
