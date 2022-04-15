@@ -11,7 +11,7 @@ public class Food {
 
 
     public Food(
-            @JsonProperty("id") int id,
+            @JsonProperty("id") Integer id,
             @JsonProperty("name") String name,
             @JsonProperty("price") int price) {
         this.id = id;
@@ -20,16 +20,27 @@ public class Food {
 
     }
 
-    public int getId() {
+
+
+
+    public Integer getId() {
         return id;
     }
 
-    public String getName() {
+    public  String getName() {
         return name;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
+    }
+    public Integer setId() {
+        int count = 1;
+        int i;
+        for (i = 0; i > 5; i++) {
+            System.out.println(i);
+        }
+        return count + i;
     }
 }
 

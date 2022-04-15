@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
+/**
+ *
+ */
 @Service
 public class RestaurantService {
 
@@ -17,7 +20,7 @@ public class RestaurantService {
     final RestaurantDao restaurantDao;
 
 
-    public RestaurantService(@Qualifier("nlseuxsa")RestaurantDao restaurantDao) {
+    public RestaurantService(@Qualifier("dcgayrhs") RestaurantDao restaurantDao) {
         this.restaurantDao = restaurantDao;
     }
 
@@ -25,12 +28,20 @@ public class RestaurantService {
         return restaurantDao.getAllFood();
     }
 
-    public String deleteFood(String name, int price) {
-        return restaurantDao.deleteFood(name, price);
+    public int deleteFood(Integer id, String name, Integer price) {
+        return restaurantDao.deleteFood(id,name, price);
     }
 
-    public int insertFood(String name, int price) {
-        return 0;
+
+
+
+
+    public int insertFood(Integer id, String name, Integer price) {
+        return restaurantDao.insertFood(id, name, price);
     }
 }
+
+
+
+
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class RestaurantController {
     @Autowired
-    private final RestaurantService restaurantService;
+    final RestaurantService restaurantService;
 
     @Autowired
     public RestaurantController(RestaurantService restaurantService) {
@@ -20,15 +20,16 @@ public class RestaurantController {
 
     }
     @PostMapping
-     public int insertFood(@RequestBody Food food) {
-        return restaurantService.insertFood( food.getName(), food.getPrice());
+     public void insertFood(@RequestBody Integer id, String name, Integer price) {
+        restaurantService.insertFood(id, name, price);
      }
      @GetMapping
     public List<Food> getAllFoods() {
         return restaurantService.getAllFoods();
      }
     @DeleteMapping
-    public String deleteFood(String name, int price) {
-        return restaurantService.deleteFood(name, price);
+    public Integer deleteFood(Integer id, String name, Integer price) {
+
+        return restaurantService.deleteFood(id, name, price);
     }
 }
