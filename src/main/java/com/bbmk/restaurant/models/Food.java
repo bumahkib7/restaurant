@@ -39,15 +39,15 @@ public class Food {
     }
 
 
-    public Long getId() {
+    public static Long getId() {
         return id;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public double getPrice() {
+    public static double getPrice() {
         return price;
     }
 

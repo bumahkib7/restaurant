@@ -1,10 +1,8 @@
 package com.bbmk.restaurant.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -12,26 +10,37 @@ import javax.persistence.Table;
 public class User {
 
 
+	public boolean isActive;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 
 
 
 
+
 	private Long id;
 	private String password;
+	@Access(AccessType.FIELD)
+	@NotNull
+	@Max(value = 200, message = "User is not active")
 	private String username;
 
 	public User(User user) {
 		this.id = user.getId();
 		this.password = user.getPassword();
 		this.username = user.getUsername();
+		this.isActive = user.isActive();
+
 
 	}
 
+	private boolean isActive() {
+		return isActive;
+	}
 
-	public void setId(Long id) {
-		this.id = id;
+
+	public Long setId(Long id) {
+		return this.id = id;
 	}
 
 	public User() {
@@ -75,5 +84,13 @@ public class User {
 
 	}
 
+	public void setActive(boolean b) {
+		isActive = b;
 
+	}
+
+	public void addAttribute(String user, String username) {
+		this.username = username;
+		this.password = user;
+	}
 }

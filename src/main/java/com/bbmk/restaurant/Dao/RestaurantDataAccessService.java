@@ -1,6 +1,7 @@
 package com.bbmk.restaurant.Dao;
 
 import com.bbmk.restaurant.models.Food;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,12 +11,17 @@ import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 
 
+
+
 @Repository("rzosknmk")
 public class RestaurantDataAccessService implements RestaurantDao {
+
+	final private Food food = new Food();
 
 
 	@Override
@@ -23,6 +29,7 @@ public class RestaurantDataAccessService implements RestaurantDao {
 		return null;
 	}
 
+	@NotNull
 	@Override
 	public List<Food> findAll() {
 		return null;
@@ -138,13 +145,14 @@ public class RestaurantDataAccessService implements RestaurantDao {
 		return null;
 	}
 
+	@NotNull
 	@Override
-	public <S extends Food> Page<S> findAll(Example<S> example, Pageable pageable) {
+	public <S extends Food> Page<S> findAll(@NotNull Example<S> example, @NotNull Pageable pageable) {
 		return null;
 	}
 
 	@Override
-	public <S extends Food> long count(Example<S> example) {
+	public <S extends Food> long count(@NotNull Example<S> example) {
 		return 0;
 	}
 
@@ -158,6 +166,7 @@ public class RestaurantDataAccessService implements RestaurantDao {
 		return null;
 	}
 
+	@NotNull
 	@Override
 	public Optional<Food> findById(Long id) {
 		return Optional.empty();
@@ -188,11 +197,70 @@ public class RestaurantDataAccessService implements RestaurantDao {
 	@Query("DELETE FROM Food WHERE id = :id")
 	public void deleteFoodById(Long id) {
 
+
 	}
 
 	@Override
 	@Query("DELETE FROM Food WHERE id = :id")
 	public void deleteFood(Integer id, String name, Integer price) {
+
+	}
+
+	@Override
+	public void updateFood(Food food) {
+
+	}
+
+	@Override
+	public void updateFoodbyID(Integer id) {
+
+	}
+
+	@Override
+	public void updateFoodbyName(String name) {
+
+	}
+
+	@Override
+	public void updateFoodbyPrice(Integer price) {
+
+	}
+
+	@Override
+	@Query("UPDATE Food SET name = :name, price = :price WHERE id = :id")
+	public void updateFood(Integer id, String name, Integer price) {
+		if (id == null) {
+			throw new IllegalArgumentException("id is null");
+		}else if (name == null) {
+			throw new IllegalArgumentException("name is null");
+		}else if (price == null) {
+			throw new IllegalArgumentException("price is null");
+		}
+
+
+	}
+
+	@Override
+	@Query("UPDATE Food SET price = :price WHERE id = :id")
+	public void updateFoodPrice(Integer id, Integer price) {
+		if (Objects.equals(id, RestaurantDao.getId())) {
+			throw new IllegalArgumentException("You didnt choose a food");
+		}else if (Objects.equals(price, RestaurantDao.getPrice())) {
+			throw new IllegalArgumentException("You didn't change the price");
+		}
+
+
+	}
+
+	@Override
+	@Query("UPDATE Food SET name = :name WHERE id = :id")
+	public void updateFoodName(Integer id, String name) {
+		if (Objects.equals(id, RestaurantDao.getId())) {
+			throw new IllegalArgumentException("You didnt choose a food");
+		}else if (Objects.equals(name, RestaurantDao.getName())) {
+			throw new IllegalArgumentException("You didn't change the name");
+		}
+
 
 	}
 }
