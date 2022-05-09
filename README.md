@@ -3,6 +3,8 @@
 ## Restaurant API.
 
 This application Stores the a Restaurant Menu to the Database with a backend API.
+The API has been secured that only specific users can actually access it.
+Security was configured with JWT.
 
 ## Getting Started.
 Here is how to get a copy of the project up and running on your local machine for development and testing purposes.
