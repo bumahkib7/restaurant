@@ -19,17 +19,38 @@ public class RestaurantController {
         this.restaurantService = restaurantService;
 
     }
+
     @PostMapping
-     public void insertFood(@RequestBody Integer id, String name, Integer price) {
+    public void insertFood(@RequestBody Integer id, String name, Integer price) {
         restaurantService.insertFood(id, name, price);
-     }
-     @GetMapping
+    }
+
+    @GetMapping
     public List<Food> getAllFoods() {
         return restaurantService.getAllFoods();
-     }
+    }
+
     @DeleteMapping
     public void deleteFoodById(Long id) {
         restaurantService.deleteFoodById(id);
     }
 
+    @PutMapping
+    public void changeFood(@RequestBody Food food) {
+        restaurantService.updateFoodbyID(Math.toIntExact(Food.getId()));
+
     }
+
+    @DeleteMapping
+    public void deleteFood(@RequestBody Food food) {
+        restaurantService.deleteFood(Math.toIntExact(Food.getId()), Food.getName(), Food.getPrice());
+    }
+
+    @PatchMapping
+    public void updateFoodbyName(@RequestBody Food food) {
+        restaurantService.updateFoodbyName(Food.getName());
+    }
+
+
+
+}

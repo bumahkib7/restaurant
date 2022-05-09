@@ -65,4 +65,47 @@ public class UserService  implements UserServiceInterface {
 		System.out.println("Delete Successful");
 	}
 
+	@Override
+	public void activateUser(User user) {
+		user.setActive(true);
+		userRepo.save(user);
+		System.out.println("Activate Successful");
+	}
+
+	@Override
+	public void deactivate(User user) {
+		user.setActive(false);
+		userRepo.save(user);
+		System.out.println("Deactivate Successful");
+
+	}
+
+	@Override
+	public void changePassword(User user) {
+		user.setPassword(passwordConfig.bCryptPasswordEncoder().encode(user.getPassword()));
+		userRepo.save(user);
+		System.out.println("Change Password Successful");
+
+	}
+
+	@Override
+	public void changeUsername(User user) {
+		user.setUsername(user.getUsername());
+		userRepo.save(user);
+		System.out.println("Change Username Successful");
+
+	}
+
+
+
+	public void activate(User user) {
+		user.setActive(true);
+		userRepo.save(user);
+		System.out.println("Activate Successful");
+	}
+
+	public void changeEmail(User user) {
+		userRepo.save(user);
+		System.out.println("Change Email Successful");
+	}
 }
