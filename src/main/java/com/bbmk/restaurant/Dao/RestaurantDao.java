@@ -1,45 +1,32 @@
 package com.bbmk.restaurant.Dao;
 
 import com.bbmk.restaurant.models.Food;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
+@Repository("rzosknmk@rogue.db.elephantsql.com")
+@Transactional
+public interface RestaurantDao extends JpaRepository<Food, Long> {
+   List<Food> getAllFood();
+
+   List<Food> findAll();
+   Optional<Food> findById(Long id);
+
+    void findByName(String name);
+    void findByPrice(double price);
+
+    void insertFood(Integer id, String name, Integer price);
+    void deleteFoodById(Long id);
 
 
-public interface RestaurantDao {
-    void updateFoodById(UUID id, String name, int price);
-
-    int insertFood(UUID id, Food food);
-
-
-
-    List<Food> getFoods();
-
-    Optional<Food> getFoodById(UUID id);
-
-    @Transactional
-    default int insertFoods(List<Food> foods) {
-        int count = 0;
-        for (Food food : foods) {
-            count += insertFood(food);
-        }
-        return count;
-    }
-
-    int insertFood(Food food);
-
-
-    List<Food> getAllFood();
-
-    @Transactional
-    int insertFood(String name, int price);
-
-    String deleteFood(String name, int price);
-
-    Optional<Food> getFoodByName(String name);
-
-    Optional<Food> getFoodByPrice(int price);
+    void deleteFood(Integer id, String name, Integer price);
 }
+
+
+// End of file
 
